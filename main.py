@@ -7,7 +7,6 @@ import time
 hostName = "localhost"
 serverPort = 8080
 
-
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         #================== Recebemos o primeiro GET
