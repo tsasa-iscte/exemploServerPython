@@ -7,9 +7,6 @@ import time
 hostName = "localhost"
 serverPort = 8080
 
-Clients='{' \
-        '' \ 
-        '}'
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
