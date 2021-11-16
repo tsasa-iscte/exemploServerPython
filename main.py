@@ -87,13 +87,14 @@ class MyServer(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     print("Hello World!")
-    webServer = HTTPServer((hostName, serverPort), MyServer)
+    #webServer = HTTPServer((hostName, serverPort), MyServer)
     print("Server started https://%s:%s" % (hostName, serverPort))
 
     try:
-        webServer.serve_forever()
+        print()
+        #webServer.serve_forever()
     except KeyboardInterrupt:
         pass
 
-    webServer.server_close()
+    #webServer.server_close()
     print("Server stopped.") 
