@@ -24,7 +24,7 @@ class MyServer(BaseHTTPRequestHandler):
         content_type=""
         with open("Server.txt", "r") as servers:
             for server in servers:
-                uri="https://"
+                uri="http://"
                 uri+=server
 
                 #header = h.request(uri,"HEAD")
@@ -87,13 +87,13 @@ class MyServer(BaseHTTPRequestHandler):
 '''
 
 if __name__ == "__main__":
-    print("Hello World!")
-    #webServer = HTTPServer((hostName, serverPort), MyServer)
-    print("Server started https://%s:%s" % (hostName, serverPort))
+    #print("Hello World!")
+    webServer = HTTPServer((hostName, serverPort), MyServer)
+    print("Server started http://%s:%s" % (hostName, serverPort))
 
     try:
-        print()
-        #webServer.serve_forever()
+
+        webServer.serve_forever()
     except KeyboardInterrupt:
         pass
 
