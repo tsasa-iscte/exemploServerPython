@@ -78,10 +78,6 @@ class MyServer(BaseHTTPRequestHandler):
             f.close()
     '''
 
-
-
-
-
 '''
     def Dados_to_Json(self,nome,ip,pedido):
         s = {}
@@ -90,6 +86,7 @@ class MyServer(BaseHTTPRequestHandler):
 '''
 
 if __name__ == "__main__":
+    print("Hello World!")
     webServer = HTTPServer((hostName, serverPort), MyServer)
     print("Server started https://%s:%s" % (hostName, serverPort))
 
