@@ -4,8 +4,11 @@ from httplib2 import Http
 import json
 import time
 
-hostName = "localhost"
+hostName = "localhost"#app-name
 serverPort = 8080
+
+
+
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -17,40 +20,41 @@ class MyServer(BaseHTTPRequestHandler):
 
         # ====================Estamos a trabalhar no GET para o DOCKER
         h = Http()
-        with open("Server.txt", "w+") as servers:
+        content_type=""
+        with open("Server.txt", "r") as servers:
             for server in servers:
                 uri="http://"
                 uri+=server
 
-                header = h.request(uri,"HEAD")
-                conten_type = header[0]['content-type'].split(';')[0]
+                #header = h.request(uri,"HEAD")
+                #content_type = header[0]['content-type'].split(';')[0]
 
 
                 response,content = h.request(uri)
                 print("content:",content)
                 print("response:",response)
 
+
+                if content_type == "text/html":
+                    pass
+                if content_type == "text/json":
+                    pass
+
+                #=============Response para o cliente
+                self.send_response(200)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
+
+                self.wfile.write(bytes(content))
+                #self.send_response(response)
                 break
-            if conten_type == "text/html":
-                pass
-            if conten_type == "text/json":
-                pass
-
-            #=============Response para o cliente
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-
-            self.wfile.write(bytes(content))
-            #self.send_response(response)
-
-
+        '''
         with open("myfile.json","w") as jsonFile:
             json.dump(self.Dados_to_Json("pedido1",ip,request_client),jsonFile)
             jsonFile.close()
   
 
-        '''
+       
         #Escreve no ficheiro o ip do cliente que fez o pedido
         #Se já existir esse ip lá, ignora
         existe = False
