@@ -4,7 +4,7 @@ from httplib2 import Http
 import json
 import time
 
-hostName = "localhost"#app-name
+hostName = "https://heroku-exemplo-servers-python.herokuapp.com/"#app-name
 serverPort = 8080
 
 
