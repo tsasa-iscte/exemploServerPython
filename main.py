@@ -23,7 +23,7 @@ class MyServer(BaseHTTPRequestHandler):
         content_type=""
         with open("Server.txt", "r") as servers:
             for server in servers:
-                uri="http://"
+                uri="https://"
                 uri+=server
 
                 #header = h.request(uri,"HEAD")
@@ -91,7 +91,7 @@ class MyServer(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)
-    print("Server started http://%s:%s" % (hostName, serverPort))
+    print("Server started https://%s:%s" % (hostName, serverPort))
 
     try:
         webServer.serve_forever()
